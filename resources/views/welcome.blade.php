@@ -75,7 +75,7 @@
 
                 <p class="m-b-md">A test service providing slow http responses</p>
 
-                <p class="left bold">Usage: http://{host}/delay/{millis}/url/{url}</p>
+                <p class="left bold">Usage: http://slowly.nopolabs.com/delay/{millis}/url/{url}</p>
 
                 <table class="left m-b-md">
                     <thead>
@@ -85,10 +85,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>host</td>
-                        <td>The host where this app is running</td>
-                    </tr>
                     <tr>
                         <td>millis</td>
                         <td>Time to delay response in milliseconds</td>
