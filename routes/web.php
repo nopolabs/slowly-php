@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// http://{host}/delay/{millis}/url/{url}
+Route::get('/delay/{millis}/url/{url}', 'DelayController')->where('url', '.+');;
