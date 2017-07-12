@@ -12,6 +12,10 @@ class DelayController extends Controller
         $micros = 1000 * $millis;
         usleep($micros);
 
-        return Redirect::to($url);
+        if (preg_match('/^https?:\/\//', $url)) {
+            return Redirect::to($url);
+        } else {
+            return $url;
+        }
     }
 }
