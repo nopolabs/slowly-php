@@ -75,7 +75,7 @@
 
                 <p class="m-b-md">A test service providing slow http responses</p>
 
-                <p class="left bold">Usage: http://slowly.nopolabs.com/{millis}/{url}</p>
+                <p class="left bold">Usage: {{ url('/') }}/{millis}/{url}</p>
 
                 <table class="left m-b-md">
                     <thead>
