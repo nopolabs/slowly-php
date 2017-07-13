@@ -75,7 +75,9 @@
 
                 <p class="m-b-md">A test service providing slow http responses</p>
 
-                <p class="left bold">Usage: {{ url('/') }}/{millis}/{url}</p>
+                <p class="left bold">Usage:</p>
+                <p class="left">{{ url('/') }}/{millis}/url/{url}</p>
+                <p class="left">{{ url('/') }}/{millis}/data/{data}</p>
 
                 <table class="left m-b-md">
                     <thead>
@@ -92,6 +94,10 @@
                     <tr>
                         <td>url</td>
                         <td>The URL to redirect to via response</td>
+                    </tr>
+                    <tr>
+                        <td>data</td>
+                        <td>Data returned directly as response</td>
                     </tr>
                     </tbody>
                 </table>

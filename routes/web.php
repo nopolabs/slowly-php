@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{millis}/{url}', 'DelayController')->where('url', '.+');;
+Route::get('/{millis}/url/{url}', 'DelayController@url')->where(['millis' => '[0-9]+', 'url' => '.+']);
+Route::get('/{millis}/data/{data}', 'DelayController@data')->where(['millis' => '[0-9]+', 'data' => '.+']);
