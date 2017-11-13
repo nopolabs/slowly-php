@@ -1,7 +1,7 @@
 # slowly-php
 A test service providing slow http responses
 
-Usage: http://{host}/{millis}/url/{url} or http://{host}/{millis}/data/{data}
+Usage: http://{host}/url/{millis}/{url} or http://{host}/data/{millis}/{data}
 
 param | meaning
 ----- | -------

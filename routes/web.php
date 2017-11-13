@@ -15,5 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{millis}/url/{url}', 'DelayController@url')->where(['millis' => '[0-9]+', 'url' => '.+']);
-Route::get('/{millis}/data/{data}', 'DelayController@data')->where(['millis' => '[0-9]+', 'data' => '.+']);
+Route::get('/url/{millis}/{url}', 'DelayController@urlGet')->where(['millis' => '[0-9]+', 'url' => '.+']);
+Route::post('/usr/{millis}', 'DelayController@urlPost')->where(['millis' => '[0-9]+']);
+
+Route::get('/data/{millis}/{data}', 'DelayController@dataGet')->where(['millis' => '[0-9]+', 'data' => '.+']);
+Route::post('/data/{millis}', 'DelayController@dataPost')->where(['millis' => '[0-9]+']);
+
+Route::get('/callback/{seconds}/{url}', 'DelayController@callbackGet')->where(['seconds' => '[0-9]+', 'url' => '.+']);
+Route::post('/callback/{seconds}/{url}', 'DelayController@callbackPost')->where(['seconds' => '[0-9]+', 'url' => '.+']);

@@ -76,8 +76,10 @@
                 <p class="m-b-md">A test service providing slow http responses</p>
 
                 <p class="left bold">Usage:</p>
-                <p class="left">{{ url('/') }}/{millis}/url/{url}</p>
-                <p class="left">{{ url('/') }}/{millis}/data/{data}</p>
+                <p class="left">GET: curl {{ url('/') }}/url/{millis}/{url}</p>
+                <p class="left">GET: curl {{ url('/') }}/data/{millis}/{data}</p>
+                <p class="left">POST: curl {{ url('/') }}/url/{millis} -d '{url}'</p>
+                <p class="left">POST: curl {{ url('/') }}/data/{millis} -d '{data}'</p>
 
                 <table class="left m-b-md">
                     <thead>
