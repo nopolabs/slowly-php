@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -30,14 +31,19 @@ class DelayedCallback implements ShouldQueue
         $client = new Client();
 
         Log::info("DelayedCallback {$this->method} {$this->url}");
-        if ($this->method === 'get') {
-            $response = $client->request('GET', $this->url);
-            Log::info("status code: {$response->getStatusCode()}");
-        } elseif ($this->method === 'post') {
-            $response = $client->request('POST', '$this->url', ['body' => $this->data]);
-            Log::info("status code: {$response->getStatusCode()}");
-        } else {
-            Log::warning("method not supported: {$this->method}");
+        try {
+            if ($this->method === 'get') {
+                $response = $client->request('GET', $this->url);
+                Log::info("$this->url => {$response->getStatusCode()}");
+            } elseif ($this->method === 'post') {
+                $response = $client->request('POST', $this->url, ['body' => $this->data]);
+                Log::info("$this->url => {$response->getStatusCode()}");
+            } else {
+                Log::warning("method not supported: {$this->method}");
+            }
+        } catch (Exception $exception) {
+            $message = $exception->getMessage();
+            Log::error("$this->url => $message");
         }
     }
 }
