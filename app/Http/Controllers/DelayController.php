@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Jobs\DelayedCallback;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Redirect;
 
 class DelayController extends Controller
@@ -29,7 +28,7 @@ class DelayController extends Controller
     {
         $this->sleep($millis);
 
-        return $data;
+        return $this->dataResponse($millis, $data);
     }
 
     public function dataPost(Request $request, $millis)
@@ -38,7 +37,7 @@ class DelayController extends Controller
 
         $this->sleep($millis);
 
-        return $data;
+        return $this->dataResponse($millis, $data);
     }
 
 
@@ -67,5 +66,13 @@ class DelayController extends Controller
         $millis = max(0, min(300000, $millis));
         $micros = 1000 * $millis;
         usleep($micros);
+    }
+
+    private function dataResponse($millis, $data)
+    {
+        return response($data, 200, [
+            'Content-Type' => 'text/plain; charset=UTF-8',
+            'Slowly-Millis' => $millis,
+        ]);
     }
 }
